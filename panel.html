@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Interview panel control screen — manage your panel status">
+  <title>Panel Screen — Panel Queue</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Connection indicator -->
+  <div class="connection-status" id="connection-status">
+    <span class="connection-dot"></span>
+    <span class="connection-label">Connecting...</span>
+  </div>
+
+  <div class="app-container">
+
+    <!-- ========== SELECTION SCREEN ========== -->
+    <div id="selection-screen" class="selection-screen fade-in">
+      <h1>Which panel are you?</h1>
+      <p class="subtitle">Select your panel number to get started</p>
+      <div class="panel-grid" id="panel-grid">
+        <!-- Buttons loaded dynamically from Firebase -->
+        <p class="text-secondary" style="grid-column:1/-1;text-align:center;padding:24px;">
+          Loading panels...
+        </p>
+      </div>
+    </div>
+
+    <!-- ========== CONTROLS SCREEN ========== -->
+    <div id="controls-screen" class="panel-controls hidden fade-in">
+      <div class="panel-header">
+        <div class="panel-badge" id="panel-badge">
+          <span class="panel-badge-dot" id="panel-badge-dot"></span>
+          <span id="panel-badge-label">Panel</span>
+        </div>
+      </div>
+
+      <div class="card status-display">
+        <div class="status-indicator">
+          <span class="status-dot busy" id="status-dot"></span>
+          <span id="status-label">🔴 Busy</span>
+        </div>
+        <p class="status-sub" id="status-sub">Interview in progress</p>
+      </div>
+
+      <div class="action-area" id="action-area"></div>
+    </div>
+
+  </div>
+
+  <!-- Switch panel link (bottom-right corner) -->
+  <a class="switch-panel-link hidden" id="switch-panel-link" onclick="switchPanel()">⚙ Switch panel</a>
+
+  <!-- Firebase SDK (compat — loaded from CDN, no npm needed) -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Registration desk — see all interview panels live and manage the candidate queue">
+  <title>Registration Desk — Panel Queue</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Connection indicator -->
+  <div class="connection-status" id="connection-status">
+    <span class="connection-dot"></span>
+    <span class="connection-label">Connecting...</span>
+  </div>
+
+  <div class="app-container desk-layout">
+
+    <div class="desk-header fade-in">
+      <h1>🖥️ Registration Desk</h1>
+      <p class="subtitle">All panels — live updates across all devices</p>
+    </div>
+
+    <div class="desk-content fade-in">
+      <!-- Panel cards grid (populated dynamically by desk.js) -->
+      <div class="panels-grid" id="panels-grid"></div>
+
+      <!-- Sidebar -->
+      <div class="desk-sidebar">
+        <!-- Add panel button -->
+        <button class="btn btn-outline add-panel-btn" id="add-panel-btn" onclick="addNewPanel()">
+          ➕ Add New Panel
+        </button>
+
+        <!-- Ready queue -->
+        <div class="card ready-queue" id="ready-queue">
+          <h2>
+            ⏳ Ready Queue
+            <span class="queue-badge" id="queue-badge">0</span>
+          </h2>
+          <ul class="queue-list" id="queue-list">
+            <li class="queue-empty">No panels free right now</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Firebase SDK (compat — loaded from CDN, no npm needed) -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/desk.js"></script>
+</body>
+</html>
